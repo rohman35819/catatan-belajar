@@ -1,15 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Catatan Belajar</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .note-link { margin: 10px 0; display: block; }
+    nav a { margin-right: 15px; text-decoration: none; font-weight: bold; }
+  </style>
 </head>
 <body>
+  <nav>
+    <a href="index.html">🏠 Home</a>
+  </nav>
+
   <h1>📘 Catatan Belajar Saya</h1>
+
+  <!-- Mesin Pencari -->
+  <input type="text" id="search" placeholder="Cari catatan..." />
+  
+  <!-- Catatan yang Ditulis -->
+  <h2>Catatan Tersimpan:</h2>
   <textarea id="noteInput" placeholder="Tulis catatan di sini..."></textarea>
   <button onclick="saveNote()">Simpan</button>
-  <h2>Catatan Tersimpan:</h2>
   <ul id="notesList"></ul>
+
+  <!-- Catatan dari File -->
+  <h2>Catatan dari File:</h2>
+  <ul id="fileNotesList"></ul>
+
   <script src="main.js"></script>
 </body>
 </html>
