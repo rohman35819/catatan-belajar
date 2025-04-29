@@ -9,6 +9,7 @@
     body { font-family: sans-serif; padding: 20px; }
     .note-link { margin: 10px 0; display: block; }
     nav a { margin-right: 15px; text-decoration: none; font-weight: bold; }
+    button { margin-left: 5px; }
   </style>
 </head>
 <body>
@@ -19,17 +20,17 @@
   <h1>📘 Catatan Belajar Saya</h1>
 
   <!-- Mesin Pencari -->
-  <input type="text" id="search" placeholder="Cari catatan..." />
-  
+  <input type="text" id="search" placeholder="Cari catatan file..." />
+
+  <!-- Catatan dari File -->
+  <h2>Catatan dari File:</h2>
+  <ul id="fileNotesList"></ul>
+
   <!-- Catatan yang Ditulis -->
   <h2>Catatan Tersimpan:</h2>
   <textarea id="noteInput" placeholder="Tulis catatan di sini..."></textarea>
   <button onclick="saveNote()">Simpan</button>
   <ul id="notesList"></ul>
-
-  <!-- Catatan dari File -->
-  <h2>Catatan dari File:</h2>
-  <ul id="fileNotesList"></ul>
 
   <script src="main.js"></script>
 </body>
