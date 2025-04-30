@@ -5,22 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Catatan Tersimpan</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    nav a {
+      margin-right: 15px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #333;
+    }
+    ul li {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 <body>
+  <!-- Navigasi -->
+  <nav>
+    <a href="index.html">🏠 Home</a>
+    <a href="buat-file.html">📝 Buat File</a>
+  </nav>
+
   <h1>📂 Halaman Catatan Tersimpan</h1>
   <ul id="savedNotesList"></ul>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  <script>
+  <!-- Supabase JS -->
+  <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
     const supabaseUrl = 'https://mryladbndilbpgkfdtzl.supabase.co';
-    const supabaseKey = 'ANON_KEY_KAMU'; // ← Ganti dengan anon key milikmu
-    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1yeWxhZGJuZGlsYnBna2ZkdHpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU5NDM0OTgsImV4cCI6MjA2MTUxOTQ5OH0.A9Y394QEdbpMzrWvQ-TtGbPVcQG9WFKc8vN4AV48Tsc'; // Ganti dengan anon key asli
+    const supabase = createClient(supabaseUrl, supabaseKey);
 
     async function loadSavedNotes() {
       const list = document.getElementById('savedNotesList');
       list.innerHTML = '';
 
-      const { data, error } = await supabase.from('notes').select('*').order('created_at', { ascending: false });
+      const { data, error } = await supabase
+        .from('notes')
+        .select('*')
+        .order('created_at', { ascending: false });
 
       if (error) {
         list.innerHTML = '<li>Gagal memuat catatan.</li>';
