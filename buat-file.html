@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buat Catatan</title>
+  <link rel="stylesheet" href="buat-file.css" />
+  
+
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    h1, h2 {
+      margin-top: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-bottom: 15px;
+    }
+    input[type="text"],
+    input[type="file"] {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    button {
+      padding: 10px 15px;
+      background-color: #2b73ff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigasi Hamburger -->
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <div id="sideMenu" class="side-menu hidden">
+    <a href="index.html">🏠 Home</a>
+    <a href="buat-file.html">📝 Buat File</a>
+  </div>
+
+  <h1>📝 Buat Catatan Baru</h1>
+
+  <h2>Judul Catatan</h2>
+  <input type="text" id="noteTitle" placeholder="Masukkan judul catatan..." />
+
+  <h2>Isi Catatan</h2>
+  <textarea id="noteContent" placeholder="Tulis isi catatan di sini..."></textarea>
+
+  <h2>Upload Media</h2>
+<div class="media-upload">
+  <div>
+    <label for="imageUpload">🖼️ Gambar</label>
+    <input type="file" id="imageUpload" accept="image/*" />
+  </div>
+  <div>
+    <label for="videoUpload">🎥 Video</label>
+    <input type="file" id="videoUpload" accept="video/*" />
+  </div>
+</div>
+<button onclick="saveNote()">Simpan Catatan</button>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

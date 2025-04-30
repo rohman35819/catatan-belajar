@@ -1,4 +1,44 @@
 body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+nav a {
+  margin-right: 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+button {
+  margin-left: 5px;
+}
+
+.hamburger {
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.side-menu {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+
+body {
     font-family: sans-serif;
     padding: 20px;
     max-width: 700px;
@@ -8,4 +48,27 @@ body {
     width: 100%;
     height: 150px;
   }
+   horizontal seperti YouTube 
+  .category-menu {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 10px;
+    margin: 10px 0;
+  }
+  
+  .category-menu button {
+    background-color: #eee;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+  
+  .category-menu button:hover {
+    background-color: #ddd;
+  }
+  
   

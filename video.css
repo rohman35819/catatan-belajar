@@ -1,0 +1,15 @@
+.media-upload {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  .media-upload div {
+    flex: 1;
+  }
+  .media-upload label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  

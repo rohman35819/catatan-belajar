@@ -10,28 +10,55 @@
     .note-link { margin: 10px 0; display: block; }
     nav a { margin-right: 15px; text-decoration: none; font-weight: bold; }
     button { margin-left: 5px; }
+
+    .hamburger {
+      font-size: 24px;
+      cursor: pointer;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .side-menu {
+      position: absolute;
+      top: 60px;
+      left: 20px;
+      background-color: #f4f4f4;
+      border: 1px solid #ddd;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <nav>
+
+  <!-- Menu horizontal seperti YouTube -->
+<div class="category-menu">
+  <button>Semua catatan</button>
+  <button>inspirasi</button>
+  <button>video</button>
+ 
+</div>
+
+
+  <!-- Navigasi Hamburger -->
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <div id="sideMenu" class="side-menu hidden">
     <a href="index.html">🏠 Home</a>
-  </nav>
+    <a href="buat-file.html">📝 Buat File</a>
+    <a href="catatan-tersimpan.html">📂 Catatan tersimpan</a>
+    <a href="video.html">🏠 upload video</a>
+  </div>
 
-  <h1>📘 Catatan Belajar Saya</h1>
+  
 
-  <!-- Mesin Pencari -->
-  <input type="text" id="search" placeholder="Cari catatan file..." />
-
-  <!-- Catatan dari File -->
-  <h2>Catatan dari File:</h2>
-  <ul id="fileNotesList"></ul>
-
-  <!-- Catatan yang Ditulis -->
-  <h2>Catatan Tersimpan:</h2>
-  <textarea id="noteInput" placeholder="Tulis catatan di sini..."></textarea>
-  <button onclick="saveNote()">Simpan</button>
-  <ul id="notesList"></ul>
-
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script src="main.js"></script>
 </body>
 </html>

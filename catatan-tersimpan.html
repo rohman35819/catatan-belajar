@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catatan Tersimpan</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>📂 Halaman Catatan Tersimpan</h1>
+  <ul id="savedNotesList"></ul>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script>
+    const supabaseUrl = 'https://mryladbndilbpgkfdtzl.supabase.co';
+    const supabaseKey = 'ANON_KEY_KAMU'; // ← Ganti dengan anon key milikmu
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+    async function loadSavedNotes() {
+      const list = document.getElementById('savedNotesList');
+      list.innerHTML = '';
+
+      const { data, error } = await supabase.from('notes').select('*').order('created_at', { ascending: false });
+
+      if (error) {
+        list.innerHTML = '<li>Gagal memuat catatan.</li>';
+        return;
+      }
+
+      data.forEach(note => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <h3>${note.title || '(Tanpa Judul)'}</h3>
+          <p>${note.content || ''}</p>
+        `;
+        list.appendChild(li);
+      });
+    }
+
+    loadSavedNotes();
+  </script>
+</body>
+</html>
