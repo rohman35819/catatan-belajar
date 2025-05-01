@@ -1,23 +1,39 @@
-/* Gaya umum */
+/* Gaya dasar halaman */
 body {
   font-family: sans-serif;
   padding: 20px;
-  max-width: 700px;
-  margin: auto;
+  margin: 0; /* Buang margin default browser */
+  padding-top: 70px; /* Jarak dari header agar konten tidak tertutup */
 }
 
-/* Judul dan textarea */
+/* Judul halaman utama */
+h1 {
+  margin: 0;
+  font-size: 24px;
+  text-align: center; /* Tengah untuk semua layar */
+  padding: 10px 0;    /* Jarak atas bawah */
+}
+
+/* Subjudul */
+h2 {
+  margin-top: 40px; /* Turunkan jarak dari h1 */
+}
+
+/* Textarea untuk isi catatan */
 textarea {
   width: 100%;
-  height: 150px;
+  height: 100px;
   margin-bottom: 15px;
 }
 
-input[type="text"] {
+/* Input teks */
+input[type="text"],
+input[type="file"] {
   width: 100%;
   margin-bottom: 15px;
 }
 
+/* Tombol simpan */
 button {
   padding: 10px 15px;
   background-color: #2b73ff;
@@ -27,50 +43,103 @@ button {
   cursor: pointer;
 }
 
-/* Menu hamburger */
+/* Tombol hamburger (☰) */
 .hamburger {
   font-size: 24px;
   cursor: pointer;
-  position: absolute;
-  top: 20px;
-  left: 20px;
+  background: none;
+  border: none;
+  z-index: 101; /* Di atas header */
 }
 
+/* Menu samping */
 .side-menu {
-  position: absolute;
-  top: 60px;
-  left: 20px;
-  background-color: #f4f4f4;
-  border: 1px solid #ddd;
-  padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  position: absolute;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  z-index: 100;
+  top: 50px;  /* Akan disesuaikan oleh media query */
+  left: 10px; /* Muncul tepat di bawah garis tiga di kiri */
 }
 
+/* Sembunyikan menu jika tidak aktif */
 .hidden {
   display: none;
 }
 
-/* Kategori horizontal (opsional) */
-.category-menu {
+/* Header bar: membungkus hamburger + judul */
+.header-bar {
   display: flex;
-  overflow-x: auto;
-  white-space: nowrap;
-  gap: 10px;
-  margin: 10px 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  z-index: 99;
+  border-bottom: 1px solid #ccc;
 }
 
-.category-menu button {
-  background-color: #eee;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 20px;
-  cursor: pointer;
-  white-space: nowrap;
-  font-weight: bold;
+/* Responsif untuk layar HP */
+@media (max-width: 600px) {
+  .header-bar h1 {
+    font-size: 18px;         /* Ukuran font agar tidak pindah baris */
+    margin: 0;
+    flex: 1;                 /* Isi ruang horizontal */
+    text-align: center;      /* Pusatkan teks */
+  }
+
+  .hamburger {
+    position: relative;      /* Supaya sejajar dalam .header-bar */
+    top: auto;
+    right: auto;
+    z-index: auto;
+  }
+
+  .side-menu {
+    top: 50px;   /* Tepat di bawah .header-bar */
+    left: 10px;  /* Muncul dari kiri sesuai tombol garis tiga */
+    right: auto; /* Hindari muncul di kanan */
+    width: auto;
+  }
 }
 
-.category-menu button:hover {
-  background-color: #ddd;
+/* Responsif untuk layar besar (komputer/tablet) */
+/* Responsif untuk layar besar (komputer/tablet) */
+@media (min-width: 601px) {
+  .header-bar {
+    justify-content: flex-start; /* Susun dari kiri */
+    gap: 10px;                   /* Jarak antara hamburger dan h1 */
+  }
+
+  .hamburger {
+    position: relative; /* Ikuti flow normal */
+    top: auto;
+    left: auto;
+    margin-right: 10px; /* Jarak ke judul */
+  }
+
+  .header-bar h1 {
+    font-size: 24px;
+    margin: 0;
+    text-align: left;
+    flex: none;         /* Jangan isi semua ruang */
+  }
+
+  .side-menu {
+    top: 50px;         /* Di bawah header-bar */
+    left: 10px;        /* Sama posisi seperti tombol hamburger */
+    right: auto;
+    width: 180px;      /* Lebar tetap di desktop */
+  }
+
+  body {
+    padding-top: 70px; /* Pastikan cukup ruang untuk header di desktop juga */
+  }
 }

@@ -4,64 +4,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Buat file</title>
-  <link rel="stylesheet" href="buat-file.css" />
-  
 
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 20px;
-    }
-    h1, h2 {
-      margin-top: 20px;
-    }
-    textarea {
-      width: 100%;
-      height: 100px;
-      margin-bottom: 15px;
-    }
-    input[type="text"],
-    input[type="file"] {
-      width: 100%;
-      margin-bottom: 15px;
-    }
-    button {
-      padding: 10px 15px;
-      background-color: #2b73ff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
+  <!-- Memuat CSS eksternal -->
+  <link rel="stylesheet" href="buat-file.css" />
 </head>
 <body>
 
-  <!-- Navigasi Hamburger -->
+  <!-- Header berisi tombol hamburger dan judul -->
+<div class="header-bar">
   <div class="hamburger" onclick="toggleMenu()">☰</div>
-  <div id="sideMenu" class="side-menu hidden">
-    <a href="index.html">🏠 Home</a>
-    <a href="buat-file.html">📝 Buat File</a>
-  </div>
-
   <h1>📝 Buat Catatan Baru</h1>
+</div>
 
+<div id="sideMenu" class="side-menu hidden">
+  <a href="index.html">🏠 Home</a>
+  <a href="buat-file.html">📝 Buat File</a>
+</div>
+
+
+  <!-- Input untuk judul catatan -->
   <h2>Judul Catatan</h2>
   <input type="text" id="noteTitle" placeholder="Masukkan judul catatan..." />
 
+  <!-- Textarea untuk isi catatan -->
   <h2>Isi Catatan</h2>
   <textarea id="noteContent" placeholder="Tulis isi catatan di sini..."></textarea>
 
- 
+  <!-- Tombol untuk menyimpan catatan -->
   <button id="saveBtn">Simpan Catatan</button>
 
-
-
+  <!-- Supabase SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  
+
+  <!-- JavaScript modul eksternal untuk menyimpan catatan -->
   <script type="module" src="buat-file.js"></script>
-  
 
-
+  <!-- Fungsi untuk toggle menu samping -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("sideMenu");
+      menu.classList.toggle("hidden");
+    }
+  </script>
 </body>
 </html>
