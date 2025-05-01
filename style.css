@@ -78,51 +78,50 @@ body {
 /* RESPONSIF KHUSUS HP */
 
 @media (max-width: 600px) {
+  /* Memberi padding atas agar isi tidak tertutup header */
   body {
     padding-top: 70px;
-    margin: 0;
+    padding-left: 10px; /* Memberi sedikit ruang kiri */
+    padding-right: 10px; /* Memberi sedikit ruang kanan */
   }
 
+  /* Menata ulang header bar agar responsif */
   .header-bar {
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    padding: 10px;
   }
 
+  /* Menengahkan menu kategori */
+  .category-menu {
+    justify-content: center;
+  }
+
+  /* Memperkecil tombol hamburger */
   .hamburger {
     font-size: 24px;
     padding: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 1001;
+    width: auto;
+    height: auto;
   }
 
+  /* Memposisikan side-menu lebih dekat ke tombol dan memperkecil lebarnya */
   .side-menu {
-    position: fixed;
-    top: 60px;
-    right: 0;
-    width: 200px; /* Ubah jadi lebih sempit di HP */
-    max-width: 80%;
-    background-color: #fff;
-    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
-    z-index: 1000;
-    transform: translateX(100%); /* sembunyikan menu saat tidak aktif */
-    transition: transform 0.3s ease;
+    right: 10px;     /* Posisikan dekat dengan sisi kanan */
+    top: 60px;       /* Tepat di bawah header */
+    width: 200px;    /* Ukuran menu agar tidak terlalu lebar di HP */
   }
 
-  .side-menu.active {
-    transform: translateX(0); /* tampilkan menu */
+  /* Naikkan posisi semua catatan dan beri padding samping agar tidak terlalu mepet */
+  .catatan-container {
+    margin-top: -20px;        /* Geser ke atas */
+    padding-left: 5px;        /* Ruang kiri */
+    padding-right: 5px;       /* Ruang kanan */
   }
 
-  .note-list {
-    padding: 10px;
-    margin-top: 10px;
-  }
-
-  .note-item {
-    margin-bottom: 10px;
-    padding: 10px;
+  /* Naikkan posisi bagian video juga agar sejajar */
+  .video-container {
+    margin-top: -20px;        /* Geser ke atas */
+    padding-left: 5px;        /* Ruang kiri */
+    padding-right: 5px;       /* Ruang kanan */
   }
 }
