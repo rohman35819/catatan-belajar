@@ -1,11 +1,12 @@
 body {
   font-family: sans-serif;
   padding: 20px;
+  padding-top: 80px; /* ruang untuk hamburger */
   max-width: 700px;
   margin: auto;
-  padding-top: 80px; /* ruang untuk hamburger */
 }
 
+/* Tombol Hamburger */
 .hamburger {
   font-size: 24px;
   cursor: pointer;
@@ -17,11 +18,12 @@ body {
   border: none;
 }
 
+/* Menu Samping */
 .side-menu {
   position: fixed;
   top: 60px;
   right: 20px;
-  width: 200px; /* beri lebar */
+  width: 200px;
   background-color: #f4f4f4;
   border: 1px solid #ddd;
   padding: 10px;
@@ -29,50 +31,49 @@ body {
   flex-direction: column;
   gap: 10px;
   z-index: 999;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Menu Tersembunyi */
 .hidden {
   display: none;
 }
 
+/* Menu Kategori */
 .category-menu {
   display: flex;
+  justify-content: flex-start;
   overflow-x: auto;
   white-space: nowrap;
   gap: 10px;
-  margin: 10px 0;
-  margin-top: 90px; /* beri jarak lebih dari hamburger */
+  margin: 20px 0;
 }
 
+/* Tombol Kategori */
 .category-menu button {
   background-color: #eee;
   border: none;
   padding: 8px 16px;
   border-radius: 20px;
   cursor: pointer;
-  white-space: nowrap;
   font-weight: bold;
+  white-space: nowrap;
 }
 
 .category-menu button:hover {
   background-color: #ddd;
 }
 
+/* Area Teks */
 textarea {
   width: 100%;
   height: 150px;
 }
 
-/* Default untuk desktop: kiri */
-.category-menu {
-  justify-content: flex-start;
-}
-
-/* Di bawah 600px: tengah */
+/* RESPONSIF untuk layar kecil */
 @media (max-width: 600px) {
   .category-menu {
-    justify-content: center;
+    justify-content: center; /* tombol ke tengah */
     margin-top: 100px;
   }
 }
