@@ -1,20 +1,32 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    // Konfigurasi VSCode Debugging
     "version": "0.2.0",
     "configurations": [
         
 
 
-
-
         {
-            "type": "chrome",
+            "name": "Launch Chrome",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
+            "type": "chrome",
             "url": "http://localhost:8080",
             "webRoot": "${workspaceFolder}"
-        }
+        },
+
+
+
+
+      {
+        "type": "chrome", // Menggunakan Chrome untuk debug
+        "request": "launch", // Meluncurkan instance Chrome baru
+        "name": "Jalankan di Chrome (localhost:8080)", // Nama konfigurasi
+        "url": "http://localhost:8080", // URL yang akan dibuka
+        "webRoot": "${workspaceFolder}", // Direktori root dari web app
+        "runtimeArgs": [
+          "--disable-web-security", // (opsional) jika butuh CORS dimatikan
+          "--user-data-dir=${workspaceFolder}/.vscode/chrome" // agar tidak bentrok dengan Chrome default
+        ]
+      }
     ]
-}
+  }
+  

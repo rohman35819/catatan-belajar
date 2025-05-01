@@ -1,26 +1,21 @@
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+console.log("File JS berhasil dimuat");
 
-const supabaseUrl = 'https://https://mryladbndilbpgkfdtzl.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1yeWxhZGJuZGlsYnBna2ZkdHpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU5NDM0OTgsImV4cCI6MjA2MTUxOTQ5OH0.A9Y394QEdbpMzrWvQ-TtGbPVcQG9WFKc8vN4AV48Tsc'; // TANPA tanda []
-const supabase = createClient(supabaseUrl, supabaseKey);
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("Halaman sudah dimuat dan JavaScript aktif");
+});
 
+
+// Inisialisasi Supabase
+const { createClient } = supabase;
+const supabaseClient = createClient('https://mryladbndilbpgkfdtzl.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1yeWxhZGJuZGlsYnBna2ZkdHpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU5NDM0OTgsImV4cCI6MjA2MTUxOTQ5OH0.A9Y394QEdbpMzrWvQ-TtGbPVcQG9WFKc8vN4AV48Tsc'
+);
+
+
+// Tampilkan dan sembunyikan menu samping
 function toggleMenu() {
   const menu = document.getElementById('sideMenu');
   menu.classList.toggle('hidden');
-}
-
-// Simpan catatan ke Supabase
-async function saveNote() {
-  const input = document.getElementById('noteInput').value.trim();
-  if (!input) return;
-
-  const { error } = await supabase.from('notes').insert([{ content: input }]);
-  if (error) {
-    alert('Gagal menyimpan catatan: ' + error.message);
-  } else {
-    document.getElementById('noteInput').value = '';
-    displayNotes();
-  }
 }
 
 // Ambil dan tampilkan catatan dari Supabase
@@ -28,32 +23,25 @@ async function displayNotes() {
   const list = document.getElementById('notesList');
   list.innerHTML = '';
 
-  const { data, error } = await supabase.from('notes').select('*').order('created_at', { ascending: false });
+  const { data, error } = await supabaseClient
+    .from('notes')
+    .select('*')
+    .order('created_at', { ascending: false });
+
   if (error) {
-    list.innerHTML = '<li>Gagal memuat catatan</li>';
+    list.innerHTML = '<li>Gagal memuat catatan.</li>';
+    console.error('Supabase error:', error);
     return;
   }
 
   data.forEach(note => {
     const li = document.createElement('li');
-
-    const span = document.createElement('span');
-    span.textContent = note.content;
-    li.appendChild(span);
-
-    const delBtn = document.createElement('button');
-    delBtn.textContent = "Hapus";
-    delBtn.onclick = async () => {
-      await supabase.from('notes').delete().eq('id', note.id);
-      displayNotes();
-    };
-    li.appendChild(delBtn);
-
+    li.textContent = note.content;
     list.appendChild(li);
   });
 }
 
-// Tampilkan daftar file catatan (manual/hardcoded)
+// Tampilkan daftar file catatan lokal/manual
 function displayFileNotes(filter = "") {
   const fileNotes = [
     { title: "Belajar HTML", file: "notes/html.html" },
@@ -70,19 +58,25 @@ function displayFileNotes(filter = "") {
       const link = document.createElement('a');
       link.href = note.file;
       link.textContent = note.title;
+      link.className = "note-link";
       link.target = "_blank";
       li.appendChild(link);
       list.appendChild(li);
     });
 }
 
-// Event listener untuk search
-document.getElementById('search').addEventListener('input', (e) => {
-  displayFileNotes(e.target.value);
-});
-
-// Jalankan saat halaman dibuka
-window.onload = function () {
+// Event listener untuk pencarian
+document.addEventListener('DOMContentLoaded', () => {
   displayNotes();
   displayFileNotes();
-};
+
+  const searchInput = document.getElementById('search');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      displayFileNotes(e.target.value);
+    });
+  }
+});
+
+window.toggleMenu = toggleMenu;
+window.saveNote = saveNote;

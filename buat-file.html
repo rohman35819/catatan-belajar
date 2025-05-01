@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Buat Catatan</title>
+  <title>Buat file</title>
   <link rel="stylesheet" href="buat-file.css" />
   
 
@@ -52,21 +52,16 @@
   <h2>Isi Catatan</h2>
   <textarea id="noteContent" placeholder="Tulis isi catatan di sini..."></textarea>
 
-  <h2>Upload Media</h2>
-<div class="media-upload">
-  <div>
-    <label for="imageUpload">🖼️ Gambar</label>
-    <input type="file" id="imageUpload" accept="image/*" />
-  </div>
-  <div>
-    <label for="videoUpload">🎥 Video</label>
-    <input type="file" id="videoUpload" accept="video/*" />
-  </div>
-</div>
-<button onclick="saveNote()">Simpan Catatan</button>
+ 
+  <button id="saveBtn">Simpan Catatan</button>
+
 
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  <script src="main.js"></script>
+  
+  <script type="module" src="buat-file.js"></script>
+  
+
+
 </body>
 </html>

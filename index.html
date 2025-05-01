@@ -38,14 +38,12 @@
 </head>
 <body>
 
-  <!-- Menu horizontal seperti YouTube -->
-<div class="category-menu">
-  <button>Semua catatan</button>
-  <button>inspirasi</button>
-  <button>video</button>
- 
-</div>
-
+  <!-- Menu kategori -->
+  <div class="category-menu">
+    <button>Semua catatan</button>
+    <button>inspirasi</button>
+    <button>video</button>
+  </div>
 
   <!-- Navigasi Hamburger -->
   <div class="hamburger" onclick="toggleMenu()">☰</div>
@@ -53,14 +51,20 @@
     <a href="index.html">🏠 Home</a>
     <a href="buat-file.html">📝 Buat File</a>
     <a href="catatan-tersimpan.html">📂 Catatan tersimpan</a>
-    <a href="video.html">🏠 upload video</a>
+    <a href="video.html">🎥 Upload Video</a>
   </div>
-
   
+  <h1>Daftar Catatan</h1>
+  <input type="text" id="search" placeholder="Cari catatan..." />
+  <ul id="fileNotesList"></ul>
 
+  <h2>Catatan dari Database</h2>
+  <ul id="notesList"></ul>
+
+  <!-- Supabase dan Script -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  <script src="main.js"></script>
-  
+ 
+  <script type="module" src="main.js"></script>
 
 </body>
 </html>
