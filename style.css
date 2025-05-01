@@ -18,13 +18,15 @@ button {
   cursor: pointer;
   position: absolute;
   top: 20px;
-  left: 20px;
+  right: 20px; /* pindah ke kanan */
+  z-index: 1000; /* pastikan di atas elemen lain */
 }
+
 
 .side-menu {
   position: absolute;
   top: 60px;
-  left: 20px;
+  right: 20px;
   background-color: #f4f4f4;
   border: 1px solid #ddd;
   padding: 10px;
