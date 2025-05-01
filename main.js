@@ -18,6 +18,10 @@ function toggleMenu() {
   menu.classList.toggle('hidden');
 }
 
+document.querySelector('.hamburger').addEventListener('click', function () {
+  document.querySelector('.side-menu').classList.toggle('active');
+});
+
 // Ambil dan tampilkan catatan dari Supabase
 async function displayNotes() {
   const list = document.getElementById('notesList');
