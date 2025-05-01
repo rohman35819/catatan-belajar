@@ -64,8 +64,15 @@ textarea {
   height: 150px;
 }
 
+/* Default untuk desktop: kiri */
+.category-menu {
+  justify-content: flex-start;
+}
+
+/* Di bawah 600px: tengah */
 @media (max-width: 600px) {
   .category-menu {
-    margin-top: 100px; /* lebih banyak jarak di mobile */
+    justify-content: center;
+    margin-top: 100px;
   }
 }
