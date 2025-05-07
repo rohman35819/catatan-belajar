@@ -1,145 +1,182 @@
-/* Gaya dasar halaman */
+:root {
+  --primary: #007bff;
+  --background: #f0f4f8;
+  --text: #222;
+  --op-color: #ff9800;
+  --eq-color: #4caf50;
+  --clr-color: #f44336;
+}
+
 body {
-  font-family: sans-serif;
-  padding: 20px;
-  margin: 0; /* Buang margin default browser */
-  padding-top: 70px; /* Jarak dari header agar konten tidak tertutup */
-}
-
-/* Judul halaman utama */
-h1 {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--background);
   margin: 0;
-  font-size: 24px;
-  text-align: center; /* Tengah untuk semua layar */
-  padding: 10px 0;    /* Jarak atas bawah */
+  padding: 70px 15px 30px;
+  color: var(--text);
+  box-sizing: border-box;
 }
 
-/* Subjudul */
-h2 {
-  margin-top: 40px; /* Turunkan jarak dari h1 */
-}
-
-/* Textarea untuk isi catatan */
-textarea {
-  width: 100%;
-  height: 100px;
-  margin-bottom: 15px;
-}
-
-/* Input teks */
-input[type="text"],
-input[type="file"] {
-  width: 100%;
-  margin-bottom: 15px;
-}
-
-/* Tombol simpan */
-button {
-  padding: 10px 15px;
-  background-color: #2b73ff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-/* Tombol hamburger (☰) */
-.hamburger {
-  font-size: 24px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  z-index: 101; /* Di atas header */
-}
-
-/* Menu samping */
-.side-menu {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  background-color: #f9f9f9;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  z-index: 100;
-  top: 50px;  /* Akan disesuaikan oleh media query */
-  left: 10px; /* Muncul tepat di bawah garis tiga di kiri */
-}
-
-/* Sembunyikan menu jika tidak aktif */
-.hidden {
-  display: none;
-}
-
-/* Header bar: membungkus hamburger + judul */
 .header-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 15px;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background-color: white;
-  z-index: 99;
+  height: 60px;
+  background: white;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 20px;
   border-bottom: 1px solid #ccc;
+  z-index: 999;
 }
 
-/* Responsif untuk layar HP */
-@media (max-width: 600px) {
-  .header-bar h1 {
-    font-size: 18px;         /* Ukuran font agar tidak pindah baris */
-    margin: 0;
-    flex: 1;                 /* Isi ruang horizontal */
-    text-align: center;      /* Pusatkan teks */
-  }
+.hamburger {
+  font-size: 24px;
+  cursor: pointer;
+}
 
-  .hamburger {
-    position: relative;      /* Supaya sejajar dalam .header-bar */
-    top: auto;
-    right: auto;
-    z-index: auto;
-  }
+.side-menu {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  background: white;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
 
-  .side-menu {
-    top: 50px;   /* Tepat di bawah .header-bar */
-    left: 10px;  /* Muncul dari kiri sesuai tombol garis tiga */
-    right: auto; /* Hindari muncul di kanan */
-    width: auto;
+.hidden {
+  display: none;
+}
+
+.form-container {
+  max-width: 500px;
+  margin: auto;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0 18px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+textarea {
+  height: 130px;
+  resize: vertical;
+}
+
+button {
+  padding: 10px 16px;
+  margin-right: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.calculator {
+  margin: 20px auto 0;
+  max-width: 260px;
+  padding: 12px;
+  background: #222;
+  border-radius: 10px;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.calculator.visible {
+  display: flex;
+  animation: fadeIn 0.3s ease;
+}
+
+#display {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.5rem;
+  text-align: right;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+
+#keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+#keys button {
+  padding: 14px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+  background: #444;
+  color: white;
+}
+
+#keys button:hover {
+  background: #555;
+}
+
+#keys .op {
+  background-color: var(--op-color);
+  color: black;
+}
+
+#keys .eq {
+  background-color: var(--eq-color);
+  color: white;
+}
+
+#keys .clr {
+  background-color: var(--clr-color);
+  color: white;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Responsif untuk layar besar (komputer/tablet) */
-/* Responsif untuk layar besar (komputer/tablet) */
-@media (min-width: 601px) {
-  .header-bar {
-    justify-content: flex-start; /* Susun dari kiri */
-    gap: 10px;                   /* Jarak antara hamburger dan h1 */
+@media (max-width: 480px) {
+  .form-container {
+    padding: 0 5px;
   }
 
-  .hamburger {
-    position: relative; /* Ikuti flow normal */
-    top: auto;
-    left: auto;
-    margin-right: 10px; /* Jarak ke judul */
+  #keys button {
+    padding: 12px;
+    font-size: 1rem;
   }
 
-  .header-bar h1 {
-    font-size: 24px;
-    margin: 0;
-    text-align: left;
-    flex: none;         /* Jangan isi semua ruang */
-  }
-
-  .side-menu {
-    top: 50px;         /* Di bawah header-bar */
-    left: 10px;        /* Sama posisi seperti tombol hamburger */
-    right: auto;
-    width: 180px;      /* Lebar tetap di desktop */
-  }
-
-  body {
-    padding-top: 70px; /* Pastikan cukup ruang untuk header di desktop juga */
+  #display {
+    font-size: 1.3rem;
   }
 }

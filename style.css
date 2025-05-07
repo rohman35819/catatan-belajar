@@ -1,127 +1,120 @@
+:root {
+  --primary: #007bff;
+  --background: #f9f9f9;
+  --text: #333;
+}
+
 body {
-  font-family: sans-serif;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--background);
+  color: var(--text);
   padding: 20px;
-  padding-top: 80px;
-  max-width: 700px;
-  margin: auto;
-}
-
-/* Wrapper untuk hamburger dan kategori */
-.header-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: white;
-  padding: 10px 20px;
-  z-index: 1000;
-  border-bottom: 1px solid #ddd;
-}
-
-/* Tombol ☰ hamburger */
-.hamburger {
-  font-size: 24px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 5px;
   margin: 0;
-  line-height: 1;
 }
 
-/* Menu kategori horizontal */
-.category-menu {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  white-space: nowrap;
+h1, h2 {
+  color: var(--primary);
+  margin-top: 1rem;
 }
 
-/* Tombol kategori */
-.category-menu button {
-  background-color: #eee;
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+button {
+  padding: 10px 15px;
+  margin: 5px;
   border: none;
-  padding: 8px 16px;
-  border-radius: 20px;
-  cursor: pointer;
+  border-radius: 6px;
+  background-color: var(--primary);
+  color: white;
   font-weight: bold;
-  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.category-menu button:hover {
-  background-color: #ddd;
+button:hover {
+  background-color: #0056b3;
 }
 
-/* Side menu navigasi */
+.note-link {
+  margin: 10px 0;
+  display: block;
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.hamburger {
+  font-size: 26px;
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
 .side-menu {
   position: fixed;
   top: 60px;
-  right: 20px;
-  width: 200px;
-  background-color: #f4f4f4;
+  left: 20px;
+  background-color: #ffffff;
   border: 1px solid #ddd;
   padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 999;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+.side-menu a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.side-menu a:hover {
+  background-color: var(--primary);
+  color: white;
 }
 
 .hidden {
   display: none;
 }
 
-/* RESPONSIF KHUSUS HP */
+.category-menu {
+  margin-top: 70px;
+  margin-left: 60px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
 
+/* Responsive */
 @media (max-width: 600px) {
-  /* Memberi padding atas agar isi tidak tertutup header */
-  body {
-    padding-top: 70px;
-    padding-left: 10px; /* Memberi sedikit ruang kiri */
-    padding-right: 10px; /* Memberi sedikit ruang kanan */
+  h1 {
+    font-size: 1.5rem;
   }
 
-  /* Menata ulang header bar agar responsif */
-  .header-bar {
-    flex-direction: row;
-    justify-content: space-between;
+  h2 {
+    font-size: 1.2rem;
   }
 
-  /* Menengahkan menu kategori */
   .category-menu {
-    justify-content: center;
+    flex-direction: column;
+    margin-left: 60px;
   }
 
-  /* Memperkecil tombol hamburger */
-  .hamburger {
-    font-size: 24px;
-    padding: 5px;
-    width: auto;
-    height: auto;
-  }
-
-  /* Memposisikan side-menu lebih dekat ke tombol dan memperkecil lebarnya */
-  .side-menu {
-    right: 10px;     /* Posisikan dekat dengan sisi kanan */
-    top: 60px;       /* Tepat di bawah header */
-    width: 200px;    /* Ukuran menu agar tidak terlalu lebar di HP */
-  }
-
-  /* Naikkan posisi semua catatan dan beri padding samping agar tidak terlalu mepet */
-  .catatan-container {
-    margin-top: -20px;        /* Geser ke atas */
-    padding-left: 5px;        /* Ruang kiri */
-    padding-right: 5px;       /* Ruang kanan */
-  }
-
-  /* Naikkan posisi bagian video juga agar sejajar */
-  .video-container {
-    margin-top: -20px;        /* Geser ke atas */
-    padding-left: 5px;        /* Ruang kiri */
-    padding-right: 5px;       /* Ruang kanan */
+  button {
+    width: 100%;
+    font-size: 1rem;
   }
 }

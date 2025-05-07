@@ -3,48 +3,85 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Buat file</title>
-
-  <!-- Memuat CSS eksternal -->
+  <title>Buat Catatan</title>
   <link rel="stylesheet" href="buat-file.css" />
 </head>
 <body>
 
-  <!-- Header berisi tombol hamburger dan judul -->
-<div class="header-bar">
-  <div class="hamburger" onclick="toggleMenu()">☰</div>
-  <h1>📝 Buat Catatan Baru</h1>
-</div>
+  <div class="header-bar">
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <h1>📝 Buat Catatan</h1>
+  </div>
 
-<div id="sideMenu" class="side-menu hidden">
-  <a href="index.html">🏠 Home</a>
-  <a href="buat-file.html">📝 Buat File</a>
-</div>
+  <div id="sideMenu" class="side-menu hidden">
+    <a href="index.html">🏠 Home</a>
+    <a href="buat-file.html">📝 Buat File</a>
+  </div>
 
+  <div class="form-container">
+    <h2>Judul Catatan</h2>
+    <input type="text" id="noteTitle" placeholder="Masukkan judul..." autofocus />
 
-  <!-- Input untuk judul catatan -->
-  <h2>Judul Catatan</h2>
-  <input type="text" id="noteTitle" placeholder="Masukkan judul catatan..." />
+    <h2>Isi Catatan</h2>
+    <textarea id="noteContent" placeholder="Tulis isi catatan..."></textarea>
 
-  <!-- Textarea untuk isi catatan -->
-  <h2>Isi Catatan</h2>
-  <textarea id="noteContent" placeholder="Tulis isi catatan di sini..."></textarea>
+    <button id="saveBtn">💾 Simpan</button>
+    <button id="toggleCalc">🧮 Kalkulator</button>
+  </div>
 
-  <!-- Tombol untuk menyimpan catatan -->
-  <button id="saveBtn">Simpan Catatan</button>
+  <div class="calculator" id="calculator">
+    <input id="display" readonly />
+    <div id="keys">
+      <button class="op" onclick="appendToDisplay('+')">+</button>
+      <button onclick="appendToDisplay('7')">7</button>
+      <button onclick="appendToDisplay('8')">8</button>
+      <button onclick="appendToDisplay('9')">9</button>
+      <button class="op" onclick="appendToDisplay('-')">−</button>
+      <button onclick="appendToDisplay('4')">4</button>
+      <button onclick="appendToDisplay('5')">5</button>
+      <button onclick="appendToDisplay('6')">6</button>
+      <button class="op" onclick="appendToDisplay('*')">×</button>
+      <button onclick="appendToDisplay('1')">1</button>
+      <button onclick="appendToDisplay('2')">2</button>
+      <button onclick="appendToDisplay('3')">3</button>
+      <button class="op" onclick="appendToDisplay('/')">÷</button>
+      <button onclick="appendToDisplay('0')">0</button>
+      <button onclick="appendToDisplay('.')">.</button>
+      <button class="eq" onclick="calculate()">=</button>
+      <button class="clr" onclick="clearDisplay()">C</button>
+    </div>
+  </div>
 
-  <!-- Supabase SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-
-  <!-- JavaScript modul eksternal untuk menyimpan catatan -->
-  <script type="module" src="buat-file.js"></script>
-
-  <!-- Fungsi untuk toggle menu samping -->
   <script>
     function toggleMenu() {
       const menu = document.getElementById("sideMenu");
+      const hamburger = document.querySelector(".hamburger");
       menu.classList.toggle("hidden");
+      menu.style.left = hamburger.offsetLeft + "px";
+    }
+
+    document.getElementById('toggleCalc').onclick = () => {
+      document.getElementById('calculator').classList.toggle('visible');
+    };
+
+    function appendToDisplay(val) {
+      document.getElementById('display').value += val;
+    }
+
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+
+    function calculate() {
+      try {
+        document.getElementById('display').value = eval(document.getElementById('display').value);
+      } catch {
+        document.getElementById('display').value = 'Error';
+      }
     }
   </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script type="module" src="buat-file.js"></script>
 </body>
 </html>
